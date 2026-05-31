@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - StepWithUs</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .auth-container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .auth-container h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #FF6B35;
+            box-shadow: 0 0 5px rgba(255, 107, 53, 0.3);
+        }
+
+        .auth-button {
+            width: 100%;
+            padding: 12px;
+            background: #FF6B35;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .auth-button:hover {
+            background: #E55A2B;
+        }
+
+        .toggle-form {
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+        }
+
+        .toggle-form a {
+            color: #FF6B35;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .toggle-form a:hover {
+            text-decoration: underline;
+        }
+
+        .error-message {
+            background: #fee;
+            color: #c33;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            display: none;
+        }
+
+        .success-message {
+            background: #efe;
+            color: #3c3;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            display: none;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #FF6B35;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        #login-form {
+            display: block;
+        }
+
+        #signup-form {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigazione -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">📚 StepWithUs</div>
+            <ul class="nav-links">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#ebooks">E-Books</a></li>
+                <li><a href="index.html#about">Chi Siamo</a></li>
+                <li><a href="index.html#contact">Contatti</a></li>
+                <li id="auth-link"><a href="login.html">🔐 Login</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Auth Container -->
+    <div class="auth-container">
+        <!-- Error Message -->
+        <div class="error-message" id="error-message"></div>
+        
+        <!-- Success Message -->
+        <div class="success-message" id="success-message"></div>
+
+        <!-- Loading -->
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+        </div>
+
+        <!-- LOGIN FORM -->
+        <form id="login-form" onsubmit="handleLogin(event)">
+            <h2>Login</h2>
+            
+            <div class="form-group">
+                <label for="login-email">Email</label>
+                <input type="email" id="login-email" required placeholder="tua@email.com">
+            </div>
+
+            <div class="form-group">
+                <label for="login-password">Password</label>
+                <input type="password" id="login-password" required placeholder="Almeno 6 caratteri">
+            </div>
+
+            <button type="submit" class="auth-button">Accedi</button>
+
+            <div class="toggle-form">
+                Non hai un account? <a onclick="toggleForm()">Registrati</a>
+            </div>
+        </form>
+
+        <!-- SIGNUP FORM -->
+        <form id="signup-form" onsubmit="handleSignup(event)">
+            <h2>Registrazione</h2>
+            
+            <div class="form-group">
+                <label for="signup-name">Nome</label>
+                <input type="text" id="signup-name" required placeholder="Il tuo nome">
+            </div>
+
+            <div class="form-group">
+                <label for="signup-email">Email</label>
+                <input type="email" id="signup-email" required placeholder="tua@email.com">
+            </div>
+
+            <div class="form-group">
+                <label for="signup-password">Password</label>
+                <input type="password" id="signup-password" required placeholder="Almeno 6 caratteri">
+            </div>
+
+            <div class="form-group">
+                <label for="signup-password-confirm">Conferma Password</label>
+                <input type="password" id="signup-password-confirm" required placeholder="Ripeti la password">
+            </div>
+
+            <button type="submit" class="auth-button">Registrati</button>
+
+            <div class="toggle-form">
+                Hai già un account? <a onclick="toggleForm()">Accedi</a>
+            </div>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 StepWithUs. Tutti i diritti riservati.</p>
+        </div>
+    </footer>
+
+    <!-- Firebase -->
+    <script type="module" src="js/auth.js"></script>
+</body>
+</html>
