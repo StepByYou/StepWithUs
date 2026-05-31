@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StepWithUs - E-Books Digitali di Qualità</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigazione -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">📚 StepWithUs</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#ebooks">E-Books</a></li>
+                <li><a href="#about">Chi Siamo</a></li>
+                <li><a href="#contact">Contatti</a></li>
+                <li><a href="#cart" class="cart-btn">🛒 Carrello (<span id="cart-count">0</span>)</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Impara, Cresci, Trasformati</h1>
+                <p>Scopri la nostra collezione di e-books digitali su programmazione, business, design e molto altro</p>
+                <a href="#ebooks" class="cta-btn">Scopri gli E-Books</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catalogo E-Books -->
+    <section id="ebooks" class="ebooks">
+        <div class="container">
+            <h2>I Nostri E-Books</h2>
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">Tutti</button>
+                <button class="filter-btn" data-filter="programmazione">Programmazione</button>
+                <button class="filter-btn" data-filter="business">Business</button>
+                <button class="filter-btn" data-filter="design">Design</button>
+                <button class="filter-btn" data-filter="salute">Salute</button>
+            </div>
+            <div class="ebooks-grid" id="ebooks-grid">
+                <!-- I prodotti vengono generati da JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Chi Siamo -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>Chi Siamo</h2>
+            <p>StepWithUs è una piattaforma dedicata alla condivisione di conoscenza attraverso e-books digitali di alta qualità. 
+               Crediamo che l'apprendimento continuo sia la chiave del successo personale e professionale.</p>
+            <div class="features">
+                <div class="feature">
+                    <span class="feature-icon">✓</span>
+                    <h3>E-Books Professionali</h3>
+                    <p>Creati da esperti del settore</p>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">✓</span>
+                    <h3>Accesso Illimitato</h3>
+                    <p>Leggi quante volte vuoi</p>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">✓</span>
+                    <h3>Scarica Offline</h3>
+                    <p>Leggi senza connessione</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contatti -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Contattaci</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <h3>Email</h3>
+                    <p><a href="mailto:info@stepwithus.com">info@stepwithus.com</a></p>
+                </div>
+                <div class="contact-item">
+                    <h3>Seguici</h3>
+                    <div class="social-links">
+                        <a href="#">Twitter</a>
+                        <a href="#">Instagram</a>
+                        <a href="#">LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal Carrello -->
+    <div id="cartModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Il Tuo Carrello</h2>
+            <div id="cart-items"></div>
+            <div class="cart-total">
+                <strong>Totale: €<span id="total-price">0.00</span></strong>
+            </div>
+            <button id="checkout-btn" class="checkout-btn">Procedi al Pagamento</button>
+            <p class="checkout-note">Integrazione pagamenti (Stripe/PayPal) da configurare</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 StepWithUs. Tutti i diritti riservati.</p>
+        </div>
+    </footer>
+
+    <!-- Modal Dettagli Prodotto -->
+    <div id="productModal" class="modal">
+        <div class="modal-content product-modal">
+            <span class="close">&times;</span>
+            <div id="product-details"></div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
