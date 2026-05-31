@@ -130,7 +130,6 @@
     </style>
 </head>
 <body>
-    <!-- Navigazione -->
     <nav class="navbar">
         <div class="container">
             <div class="logo">📚 StepWithUs</div>
@@ -144,20 +143,13 @@
         </div>
     </nav>
 
-    <!-- Auth Container -->
     <div class="auth-container">
-        <!-- Error Message -->
         <div class="error-message" id="error-message"></div>
-        
-        <!-- Success Message -->
         <div class="success-message" id="success-message"></div>
-
-        <!-- Loading -->
         <div class="loading" id="loading">
             <div class="spinner"></div>
         </div>
 
-        <!-- LOGIN FORM -->
         <form id="login-form" onsubmit="handleLogin(event)">
             <h2>Login</h2>
             
@@ -178,7 +170,6 @@
             </div>
         </form>
 
-        <!-- SIGNUP FORM -->
         <form id="signup-form" onsubmit="handleSignup(event)">
             <h2>Registrazione</h2>
             
@@ -210,14 +201,12 @@
         </form>
     </div>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <p>&copy; 2026 StepWithUs. Tutti i diritti riservati.</p>
         </div>
     </footer>
 
-    <!-- Firebase -->
     <script type="module" src="js/auth.js"></script>
 </body>
 </html>
