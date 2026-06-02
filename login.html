@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - StepWithUs</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .auth-container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .auth-container h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #FF6B35;
+            box-shadow: 0 0 5px rgba(255, 107, 53, 0.3);
+        }
+
+        .auth-button {
+            width: 100%;
+            padding: 12px;
+            background: #FF6B35;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .auth-button:hover {
+            background: #E55A2B;
+        }
+
+        .toggle-form {
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+        }
+
+        .toggle-form a {
+            color: #FF6B35;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .toggle-form a:hover {
+            text-decoration: underline;
+        }
+
+        .error-message {
+            background: #fee;
+            color: #c33;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            display: none;
+        }
+
+        .success-message {
+            background: #efe;
+            color: #3c3;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            display: none;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #FF6B35;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .auth-page { min-height: calc(100vh - 150px); display:grid; place-items:center; padding:4rem 1rem; background: radial-gradient(circle at 20% 20%, rgba(22,131,255,.18), transparent 30%), linear-gradient(135deg,#07111f,#0f233b); }
+        .auth-container { max-width: 980px; width:100%; margin:0; display:grid; grid-template-columns: .95fr 1.05fr; padding:0; overflow:hidden; border-radius:26px; background:#fff; box-shadow:0 30px 90px rgba(0,0,0,.35); }
+        .auth-side { color:white; padding:3rem; background:linear-gradient(160deg,rgba(7,17,31,.95),rgba(22,131,255,.78)), url('images/stepwithus-promo.png') center/cover; display:flex; flex-direction:column; justify-content:flex-end; min-height:560px; }
+        .auth-side h1{font-size:2.6rem;line-height:1.05;margin-bottom:1rem}.auth-side p{color:rgba(255,255,255,.82);font-size:1.05rem}.auth-panel{padding:2.2rem}.auth-tabs{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.5rem;background:#f1f5f9;padding:.45rem;border-radius:16px}.auth-tab{border:0;padding:.85rem;border-radius:12px;font-weight:900;cursor:pointer;background:transparent;color:#64748b}.auth-tab.active{background:#1683ff;color:white;box-shadow:0 10px 22px rgba(22,131,255,.25)}
+        .hidden-form{display:none!important}.auth-container h2{text-align:left;color:#0f172a;margin-bottom:1rem}.auth-button{background:linear-gradient(135deg,#1683ff,#0068d8);border-radius:14px}.auth-button:hover{background:linear-gradient(135deg,#0068d8,#004fa8);transform:translateY(-2px)}.form-group input{border-radius:12px}.form-group input:focus{border-color:#1683ff;box-shadow:0 0 0 4px rgba(22,131,255,.12)}.toggle-form a{color:#1683ff}.auth-note{font-size:.85rem;color:#64748b;text-align:center;margin-top:1rem}.success-message,.error-message{border-radius:12px}.loading{margin:0 0 1rem}@media(max-width:850px){.auth-container{grid-template-columns:1fr}.auth-side{min-height:260px;padding:2rem}.auth-panel{padding:1.4rem}}
+    </style>
+</head>
+<body>
+  <div class="login-orbit-rocket" aria-hidden="true">🚀</div>
+    <nav class="navbar">
+        <div class="container">
+            <a class="logo" href="index.html"><span class="logo-mark"><i></i><i></i><i></i><em></em></span> StepWithUs</a>
+            <ul class="nav-links clean-nav compact-nav">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#ebooks">Catalogo</a></li>
+                <li><a href="come-funziona.html">Come funziona</a></li>
+                <li class="more-menu">
+                  <button class="more-toggle" type="button" aria-haspopup="true" aria-expanded="false">Altre info ▾</button>
+                  <div class="more-dropdown" role="menu">
+                    <a href="index.html#about" role="menuitem">Chi siamo</a>
+                    <a href="index.html#faq" role="menuitem">FAQ</a>
+                    <a href="index.html#contact" role="menuitem">Contattaci</a>
+                  </div>
+                </li>
+                <li><a href="my-ebooks.html" class="account-link">👤 Area personale</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="auth-page">
+    <div class="auth-container">
+        <aside class="auth-side">
+            <p class="eyebrow">Area personale</p>
+            <h1>Entra nel tuo percorso StepWithUs.</h1>
+            <p>Registrati, accedi e prova la futura area dove saranno disponibili acquisti e download.</p>
+        </aside>
+        <section class="auth-panel">
+        <div class="auth-tabs">
+            <button type="button" class="auth-tab active" data-auth-tab="login">Accedi</button>
+            <button type="button" class="auth-tab" data-auth-tab="signup">Registrati</button>
+        </div>
+        <div class="error-message" id="error-message"></div>
+        <div class="success-message" id="success-message"></div>
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+        </div>
+
+        <form id="login-form" onsubmit="handleLogin(event)">
+            <h2>Login</h2>
+            
+            <div class="form-group">
+                <label for="login-email">Email</label>
+                <input type="email" id="login-email" required placeholder="tua@email.com">
+            </div>
+
+            <div class="form-group">
+                <label for="login-password">Password</label>
+                <input type="password" id="login-password" required placeholder="Almeno 6 caratteri">
+            </div>
+
+            <button type="submit" class="auth-button">Accedi</button>
+
+            <div class="toggle-form">
+                Non hai un account? <a onclick="toggleForm()">Registrati</a>
+            </div>
+        </form>
+
+        <form id="signup-form" onsubmit="handleSignup(event)">
+            <h2>Registrazione</h2>
+            
+            <div class="form-group">
+                <label for="signup-name">Nome</label>
+                <input type="text" id="signup-name" required placeholder="Il tuo nome">
+            </div>
+
+            <div class="form-group">
+                <label for="signup-email">Email</label>
+                <input type="email" id="signup-email" required placeholder="tua@email.com">
+            </div>
+
+            <div class="form-group">
+                <label for="signup-password">Password</label>
+                <input type="password" id="signup-password" required placeholder="Almeno 6 caratteri">
+            </div>
+
+            <div class="form-group">
+                <label for="signup-password-confirm">Conferma Password</label>
+                <input type="password" id="signup-password-confirm" required placeholder="Ripeti la password">
+            </div>
+
+            <button type="submit" class="auth-button">Registrati</button>
+
+            <div class="toggle-form">
+                Hai già un account? <a onclick="toggleForm()">Accedi</a>
+            </div>
+        </form>
+        <p class="auth-note">Demo locale: i dati vengono salvati solo nel tuo browser. Per la vendita reale useremo Firebase/Stripe.</p>
+        </section>
+    </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 StepWithUs. Tutti i diritti riservati.</p>
+        </div>
+    </footer>
+
+    <script src="js/auth.js"></script>
+</body>
+</html>

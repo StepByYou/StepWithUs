@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Area Personale - StepWithUs</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="account-body">
+  <nav class="navbar account-nav">
+    <div class="container nav-container">
+      <a class="logo" href="index.html"><span class="logo-mark"><i></i><i></i><i></i><em></em></span> StepWithUs</a>
+      <ul class="nav-links open">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#ebooks">Catalogo</a></li>
+        <li><a href="come-funziona.html">Come funziona</a></li>
+        <li><a href="#" onclick="logoutArea();return false;">Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="account-page">
+    <section class="account-hero">
+      <div class="account-stars" aria-hidden="true"></div>
+      <div class="container account-hero-grid">
+        <div class="account-welcome">
+          <p class="account-kicker">Area personale</p>
+          <h1 id="personalGreeting">Bentornato.</h1>
+          <p>La tua libreria privata per trasformare conoscenza in tempo, libertà e crescita concreta.</p>
+          <div class="account-actions">
+            <a class="cta-btn" href="#library">Continua il percorso →</a>
+            <a class="secondary-cta" href="index.html#ebooks">Aggiungi nuovi ebook</a>
+          </div>
+        </div>
+        <div class="account-orbit-card">
+          <div class="orbit-core">SWU</div>
+          <span class="orbit-item o1">📚</span>
+          <span class="orbit-item o2">⏳</span>
+          <span class="orbit-item o3">🧠</span>
+          <span class="orbit-item o4">🕊️</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="account-section">
+      <div class="container">
+        <div class="account-stats">
+          <div class="stat-tile"><span id="statBooks">3</span><p>Ebook disponibili</p></div>
+          <div class="stat-tile"><span id="statProgress">42%</span><p>Progresso medio</p></div>
+          <div class="stat-tile"><span>6h</span><p>Tempo di lettura</p></div>
+          <div class="stat-tile"><span>7</span><p>Giorni attivi</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="account-section" id="library">
+      <div class="container">
+        <div class="account-section-head">
+          <div>
+            <p class="account-kicker">La mia libreria</p>
+            <h2>Riprendi da dove eri rimasto</h2>
+          </div>
+          <a href="index.html#ebooks">Vedi catalogo completo</a>
+        </div>
+        <div class="personal-library-grid">
+          <article class="personal-book-card">
+            <img src="assets/cover-abitudini-v80.png" alt="Copertina Abitudini Vincenti">
+            <div><small>Crescita personale</small><h3>Costruire Abitudini Vincenti</h3><div class="progress-line"><i style="width:64%"></i></div><p>64% completato</p><button onclick="openReader('Costruire Abitudini Vincenti')">Continua lettura</button></div>
+          </article>
+          <article class="personal-book-card">
+            <img src="assets/cover-produttivita-v80.png" alt="Copertina Produttività">
+            <div><small>Produttività</small><h3>Produttività senza Stress</h3><div class="progress-line"><i style="width:38%"></i></div><p>38% completato</p><button onclick="openReader('Produttività senza Stress')">Continua lettura</button></div>
+          </article>
+          <article class="personal-book-card locked">
+            <img src="assets/cover-ai-v80.png" alt="Copertina AI per il lavoro">
+            <div><small>Business & lavoro</small><h3>AI per il Lavoro</h3><div class="progress-line"><i style="width:24%"></i></div><p>24% completato</p><button onclick="openReader('AI per il Lavoro')">Apri ebook</button></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="account-section account-two-col">
+      <div class="container account-grid-2">
+        <div class="account-panel">
+          <p class="account-kicker">Focus di oggi</p>
+          <h2>Una piccola azione concreta</h2>
+          <p>Scegli un capitolo, leggi 10 minuti e salva una nota utile da applicare oggi stesso.</p>
+          <ul class="account-checklist">
+            <li>✓ Completa il prossimo capitolo</li>
+            <li>✓ Evidenzia una frase chiave</li>
+            <li>✓ Trasforma una lezione in azione</li>
+          </ul>
+        </div>
+        <div class="account-panel profile-panel">
+          <p class="account-kicker">Profilo</p>
+          <h2 id="profileName">Utente StepWithUs</h2>
+          <p id="profileEmail">email non disponibile</p>
+          <div class="profile-badge">Piano: Demo personale</div>
+          <div class="profile-badge">Accesso: Libreria digitale</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="account-section reader-demo" id="readerDemo">
+      <div class="container">
+        <div class="account-section-head"><div><p class="account-kicker">Lettore ebook</p><h2 id="readerTitle">Anteprima lettore</h2></div></div>
+        <div class="reader-layout">
+          <aside><b>Indice</b><a>Introduzione</a><a>Capitolo 1</a><a>Capitolo 2</a><a>Azioni pratiche</a></aside>
+          <article><h3>Il prossimo passo</h3><p>Qui comparirà il contenuto dell'ebook acquistato. Il lettore sarà pensato per essere pulito, leggibile e motivante, con note personali e avanzamento salvato.</p><blockquote>La conoscenza diventa libertà quando viene trasformata in azione.</blockquote></article>
+          <aside><b>Note</b><textarea placeholder="Scrivi qui una nota personale..."></textarea><button>Salva nota</button></aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/auth.js"></script>
+  <script>
+    function currentUser(){ try { return JSON.parse(localStorage.getItem('stepwithus_user')) || JSON.parse(localStorage.getItem('user')); } catch(e){ return null; } }
+    function logoutArea(){ localStorage.removeItem('stepwithus_user'); localStorage.removeItem('user'); window.location.href='index.html'; }
+    function openReader(title){ document.getElementById('readerTitle').textContent = title; document.getElementById('readerDemo').scrollIntoView({behavior:'smooth'}); }
+    document.addEventListener('DOMContentLoaded', function(){
+      const user = currentUser();
+      const name = user && user.name ? user.name : 'Alessandro';
+      const hour = new Date().getHours();
+      const salute = hour < 12 ? 'Buongiorno' : hour < 18 ? 'Buon pomeriggio' : 'Buonasera';
+      document.getElementById('personalGreeting').innerHTML = salute + ', <span>' + name + '</span> 👋';
+      document.getElementById('profileName').textContent = name;
+      document.getElementById('profileEmail').textContent = user && user.email ? user.email : 'Account demo locale';
+    });
+  </script>
+</body>
+</html>
